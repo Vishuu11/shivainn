@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    // Generate placeholder images using canvas
+    function createPlaceholder(filename, text) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 800;
+      canvas.height = 600;
+      const ctx = canvas.getContext('2d');
+      
+      // Create gradient background
+      const gradient = ctx.createLinearGradient(0, 0, 800, 600);
+      gradient.addColorStop(0, '#1a3a52');
+      gradient.addColorStop(1, '#2d5a7b');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 800, 600);
+      
+      // Add text
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 48px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, 400, 300);
+      
+      // Download
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL('image/jpeg');
+      link.download = filename;
+      link.click();
+    }
+  </script>
+</head>
+<body onload="
+  createPlaceholder('room-1.jpg', 'Hotel Shiva INN - Premium Room');
+  setTimeout(() => createPlaceholder('room-2.jpg', 'Hotel Shiva INN - Suite Room'), 500);
+  setTimeout(() => createPlaceholder('lobby.jpg', 'Hotel Shiva INN - Lobby'), 1000);
+  setTimeout(() => createPlaceholder('veg-restaurant.jpg', 'Hotel Shivapakam - Veg Restaurant'), 1500);
+  setTimeout(() => createPlaceholder('nonveg-bar.jpg', 'Highway Bar & Bistro'), 2000);
+  setTimeout(() => createPlaceholder('grand-deck.jpg', 'Grand Deck Event Venue'), 2500);
+  setTimeout(() => createPlaceholder('boardroom.jpg', 'The Boardroom'), 3000);
+  setTimeout(() => createPlaceholder('marriage-hall.jpg', 'Marriage Hall'), 3500);
+  setTimeout(() => createPlaceholder('exterior-night.jpg', 'Hotel Exterior Night View'), 4000);
+  setTimeout(() => createPlaceholder('boardroom-hero.jpg', 'Professional Meeting Space'), 4500);
+">
+  <p>Generating placeholder images...</p>
+</body>
+</html>
